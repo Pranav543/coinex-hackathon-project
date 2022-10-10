@@ -197,12 +197,9 @@ if (idx && password && unlockDepositAmount && chain) {
   Alpine.store("gChain", chain);
   // set active tab to fetch
 } else {
-  Alpine.store("gChain", "polygon-main");
+  Alpine.store("gChain", "coinex");
 }
 
-// addresses
-// mumbai, goerli, polygon main, ethereum main
-// Alpine.store("gChain", "polygon-main");
 var contract_addresses = {
   coinex: "0xE4b121AD75466CF79a8975725CDD26C703740005",
 };
