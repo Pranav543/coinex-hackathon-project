@@ -4,7 +4,6 @@ pragma solidity ^0.8.0;
 //////////////////////////////////////////////////////////////////////////////////////
 // @title   2-phased, password-protected escrow contract
 // @version 1.0
-// @author  H & K
 // @dev     This contract is used to send non front-runnable link payments
 //          to a recipient address. The recipient address can be arbitrary
 //          and is only revealed after claiming the payment.
@@ -13,9 +12,7 @@ pragma solidity ^0.8.0;
 //          deposit.
 //          Sender also has option to withdraw funds at any time, as well as
 //          setting a dynamic refundable deposit for the claimer to initate
-//          the claim process, to protect against DoS attacks.
-// @dev     more from the authors: 
-//          https://hugomontenegro.com  https://konradurban.com
+//          the claim process, to protect against DoS attacks.      
 //          
 //          UNSTOPPABLE APPS FTW!
 //////////////////////////////////////////////////////////////////////////////////////
@@ -60,17 +57,15 @@ contract TwoPhasedEscrow {
         uint256 depositIdx
     );
 
-    // ETH B3rlin 2022 celebration event
     event Celebration(string message);
 
     // constructor
     constructor() {
-        // ETH B3rlin 2022 celebration
-        emit Celebration("ETH B3rlin 2022 <3");
+        emit Celebration("Hello World");
     }
 
-    // deposit ether to escrow with a hashed password & get deposit index
-    function depositEther(bytes32 _hashedPassword, uint256 _unlockDepositAmount)
+    // deposit CET to escrow with a hashed password & get deposit index
+    function depositCET(bytes32 _hashedPassword, uint256 _unlockDepositAmount)
         public
         payable
         returns (uint256)
@@ -98,13 +93,13 @@ contract TwoPhasedEscrow {
     }
 
     // sender can always withdraw deposited assets at any time
-    function withdrawEtherSender(uint256 _depositIdx) public {
+    function withdrawCETSender(uint256 _depositIdx) public {
         require(
             deposits[_depositIdx].sender == msg.sender,
             "only sender can withdraw this deposit"
         );
 
-        // transfer ether back to sender
+        // transfer CET back to sender
         payable(msg.sender).transfer(deposits[_depositIdx].amount);
         emit Withdraw(msg.sender, deposits[_depositIdx].amount, _depositIdx);
 
@@ -113,11 +108,11 @@ contract TwoPhasedEscrow {
     }
 
     // claimer lock functionality. Sets the recipient address and opens a 100 block timewindow in which the claimer can withdraw the deposit.
-    // Costs some ETH to prevent spamming and DoS attacks. Is later refunded to the sender.
-    function openEtherDepositWindow(uint256 _depositIdx) public payable {
+    // Costs some CET to prevent spamming and DoS attacks. Is later refunded to the sender.
+    function openCETDepositWindow(uint256 _depositIdx) public payable {
         require(
             msg.value >= deposits[_depositIdx].unlockDepositAmount,
-            "not enough ETH sent to open deposit window"
+            "not enough CET sent to open deposit window"
         );
         // if the deposit has already been lockeed once, require the window to be over
         if (deposits[_depositIdx].blockNumber > 0) {
@@ -135,7 +130,7 @@ contract TwoPhasedEscrow {
 
     // Withdraw with Password functionality. Accepts a password and compares it to the hashed password.
     // If the password is correct, the deposit is transferred to the recipient address.
-    function withdrawEtherPassword(uint256 _depositIdx, string memory _password)
+    function withdrawCETPassword(uint256 _depositIdx, string memory _password)
         public
     {
         require(
@@ -152,7 +147,7 @@ contract TwoPhasedEscrow {
             "wrong password"
         );
 
-        // transfer ether to recipient (plus 0.001 ETH refund)
+        // transfer CET to recipient 
         payable(deposits[_depositIdx].recipient).transfer(
             deposits[_depositIdx].amount +
                 deposits[_depositIdx].unlockDepositAmount
@@ -198,7 +193,7 @@ contract TwoPhasedEscrow {
     }
 
     // count deposits for address
-    function getEtherDepositsSent(address _sender)
+    function getCETDepositsSent(address _sender)
         public
         view
         returns (uint256)
