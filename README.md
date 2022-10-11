@@ -40,6 +40,6 @@ Coinex Testnet: [0xE4b121AD75466CF79a8975725CDD26C703740005](https://testnet.coi
 
 ![squirrel-logo-plain](https://user-images.githubusercontent.com/10008415/190924853-3b1ff3fc-27cb-4b7a-8c45-5e80195a80d7.PNG)
 ![squirrel-fetchconfirmed](https://user-images.githubusercontent.com/10008415/190924854-351a567c-ef16-493e-8615-6088d179e06e.PNG)
-![squirrel-landingpage](https://user-images.githubusercontent.com/10008415/190924855-dd99c655-7129-4c2f-b092-ec2e0154fe08.PNG)
-![squirrel-tx-confirmed](https://user-images.githubusercontent.com/10008415/190924856-a161a808-a135-46d1-bf81-319b272ca94d.PNG)
+![squirrel-landingpage](https://ipfs.fleek.co/ipfs/bafybeihybawqejvosueilu2ujqjkkgraq7ekr3b7yd3z7oo2dhv5gzlrfi)
+![squirrel-tx-confirmed](https://ipfs.fleek.co/ipfs/bafybeidvlwal5ss4eumirj2t4nnruit5dd2aivwewwt5uisc6tcqptm3se)
 ![squirrel-logo](https://user-images.githubusercontent.com/10008415/190924858-423b2478-40dd-4de5-aa28-cee444b0f5d6.PNG)
